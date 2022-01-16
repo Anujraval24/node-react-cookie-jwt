@@ -1,16 +1,17 @@
+import React, { lazy } from 'react';
 import { Navigate, useRoutes } from 'react-router-dom';
 // layouts
-import DashboardLayout from './layouts/dashboard';
-import LogoOnlyLayout from './layouts/LogoOnlyLayout';
+const DashboardLayout = lazy(() => import('./layouts/dashboard'));
+const LogoOnlyLayout = lazy(() => import('./layouts/LogoOnlyLayout'));
 //
-import Login from './pages/Login';
-import Register from './pages/Register';
-import DashboardApp from './pages/DashboardApp';
-import Products from './pages/Products';
-import Blog from './pages/Blog';
-import User from './pages/User';
-import NotFound from './pages/Page404';
+const Login = lazy(() => import('./pages/Login'));
 
+const Register = lazy(() => import('./pages/Register'));
+const DashboardApp = lazy(() => import('./pages/DashboardApp'));
+const Products = lazy(() => import('./pages/Products'));
+const Blog = lazy(() => import('./pages/Blog'));
+const User = lazy(() => import('./pages/User'));
+const NotFound = lazy(() => import('./pages/Page404'));
 // ----------------------------------------------------------------------
 
 export default function Router() {
@@ -33,7 +34,7 @@ export default function Router() {
         { path: 'login', element: <Login /> },
         { path: 'register', element: <Register /> },
         { path: '404', element: <NotFound /> },
-        { path: '/', element: <Navigate to="/dashboard" /> },
+        { path: '/', element: <Navigate to="/dashboard/app" /> },
         { path: '*', element: <Navigate to="/404" /> }
       ]
     },

@@ -1,3 +1,5 @@
+import { Suspense } from 'react';
+
 // routes
 import Router from './routes';
 // theme
@@ -11,11 +13,13 @@ import { BaseOptionChartStyle } from './components/charts/BaseOptionChart';
 
 export default function App() {
   return (
-    <ThemeConfig>
-      <ScrollToTop />
-      <GlobalStyles />
-      <BaseOptionChartStyle />
-      <Router />
-    </ThemeConfig>
+    <Suspense fallback={<div>Loading...</div>}>
+      <ThemeConfig>
+        <ScrollToTop />
+        <GlobalStyles />
+        <BaseOptionChartStyle />
+        <Router />
+      </ThemeConfig>
+    </Suspense>
   );
 }
